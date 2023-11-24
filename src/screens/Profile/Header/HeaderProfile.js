@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     height: 37,
     transform: [{ rotate: "-35deg" }],
     left: 310,
-    top: 200,
+    top: 210,
   },
 });
