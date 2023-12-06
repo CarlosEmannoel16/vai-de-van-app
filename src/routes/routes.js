@@ -1,5 +1,6 @@
 import Home from "../screens/Home/Home";
 import ListTravels from "../screens/ListTravel/ListTravels";
+import { MyTravels } from "../screens/MyTravels/MyTravels";
 import Profile from "../screens/Profile/Profile";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -34,6 +35,15 @@ export const Routes = [
   {
     name: "Lista",
     component: ListTravels,
+    options: {
+      tabBarIcon: ({ size, color }) => (
+        <Ionicons name="log-out-outline" size={size} color={color} />
+      ),
+    },
+  },
+  {
+    name: "Minhas Viagens",
+    component: MyTravels,
     options: {
       tabBarIcon: ({ size, color }) => (
         <Ionicons name="log-out-outline" size={size} color={color} />

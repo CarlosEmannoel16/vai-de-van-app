@@ -1,5 +1,5 @@
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
-export default HeaderProfile = () => {
+export default HeaderMyTravel = () => {
   return (
     <View style={styles.header}>
       <ImageBackground
@@ -10,7 +10,6 @@ export default HeaderProfile = () => {
         style={{ width: 120, height: 120 }}
       ></ImageBackground>
       <Text style={styles.textProfile}>Carlos Emannoel</Text>
-      <Text style={styles.textSubtitle}>Meus Dados Cadastrais</Text>
     </View>
   );
 };

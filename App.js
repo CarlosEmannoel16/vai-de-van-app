@@ -18,11 +18,34 @@ export default function App() {
       style={{
         flex: 1,
         fontFamily: "Poppins-Regular",
-        backgroundColor: "#222689",
+        backgroundColor: "#10112C",
       }}
     >
       <NavigationContainer>
-        <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Navigator
+          screenOptions={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: "#10112C",
+              borderBottomWidth: 0,
+              marginBottom: 0,
+            },
+            tabBarActiveTintColor: "#fff",
+            tabBarInactiveTintColor: "#888",
+            tabBarStyle: {
+              borderTopColor: "#00000080",
+              backgroundColor: "#10112C",
+              paddingBottom: 4,
+              paddingTop: 8,
+              height: 60,
+              paddingHorizontal: 60,
+            },
+            tabBarLabelStyle: {
+              fontFamily: "Poppins-Regular",
+              fontSize: 14,
+            },
+          }}
+        >
           {Routes.map((route) => (
             <Tab.Screen
               name={route.name}
@@ -33,25 +56,7 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
 
-      <StatusBar backgroundColor="red" />
+      <StatusBar translucent={true} style={"inverted"} />
     </SafeAreaView>
   ) : null;
 }
-
-const screenOptions = {
-  headerShown: false,
-  tabBarActiveTintColor: "#fff",
-  tabBarInactiveTintColor: "#888",
-  tabBarStyle: {
-    borderTopColor: "#00000080",
-    backgroundColor: "#222689",
-    paddingBottom: 4,
-    paddingTop: 8,
-    height: 60,
-    paddingHorizontal: 60,
-  },
-  tabBarLabelStyle: {
-    fontFamily: "Poppins-Regular",
-    fontSize: 14,
-  },
-};

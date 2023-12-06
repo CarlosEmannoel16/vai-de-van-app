@@ -15,10 +15,7 @@ export default Home = () => {
   return (
     <View style={styles.container}>
       <FixHeader />
-      <ScrollView
-        style={{ height: 643, width: "100%" }}
-        refreshControl={<RefreshControl />}
-      >
+      <ScrollView style={{ height: 643, width: "100%" }}>
         <HeaderInitial />
         <View>
           <View

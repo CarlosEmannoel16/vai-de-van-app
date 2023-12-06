@@ -45,7 +45,7 @@ export const InformationInternSmallCardTravelStyled = styled.View`
 
 export const ButtonCardTravelStyled = styled.TouchableOpacity`
   width: 60%;
-  background-color: #013063;
+  background-color: #860068;
   height: 30px;
   border-radius: 5px;
   margin-top: 10px;

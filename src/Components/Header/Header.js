@@ -9,6 +9,7 @@ import {
 import IconBus from "../../../assets/frente-do-onibus.png";
 import IconCalendar from "../../../assets/calendar.png";
 import InputWithIcon from "./inputs/InputWithIcon";
+
 export default HeaderInitial = () => {
   return (
     <View style={styles.header}>
@@ -32,8 +33,6 @@ export default HeaderInitial = () => {
           <Text style={{ color: "#fff", fontWeight: 800 }}>BUSCAR</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.effectLeft}></View>
-      <View style={styles.effectRight}></View>
     </View>
   );
 };
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "baseline",
     height: 240,
-    backgroundColor: "#222689",
+    backgroundColor: "#10112C",
     gap: 10,
     paddingHorizontal: 10,
     paddingTop: 20,
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
   buttonSearch: {
     width: "100%",
     height: 50,
-    backgroundColor: "#0052CE",
+    backgroundColor: "#860068",
     borderRadius: 5,
     display: "flex",
     justifyContent: "center",

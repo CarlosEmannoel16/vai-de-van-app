@@ -1,23 +1,15 @@
 import { ImageBackground, StyleSheet, TextInput } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default InputWithIcon = ({ icon, placeholder, keyboardType, size }) => {
   return (
-    <ImageBackground
+    <TextInput
       style={size === "small" ? styles.input : styles.inputLarge}
-      source={icon}
-      imageStyle={{
-        height: 20,
-        width: 20,
-        marginLeft: 10,
-        marginTop: 12,
-      }}
+      placeholder={placeholder}
+      keyboardType="ascii-capable"
     >
-      <TextInput
-        style={{ paddingLeft: 20 }}
-        placeholder={placeholder}
-        keyboardType="ascii-capable"
-      />
-    </ImageBackground>
+      <Ionicons name="bus" size={24} color="black" />
+    </TextInput>
   );
 };
 

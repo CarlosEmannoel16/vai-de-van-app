@@ -6,7 +6,7 @@ export const HeaderListTravelsStyled = styled.View`
   flex-direction: column;
   justify-content: baseline;
   height: 100px;
-  background-color: #222689;
+  background-color: #10112c;
   gap: 10px;
   padding-right: 10px;
   padding-left: 10px;
