@@ -186,64 +186,20 @@ export const cities = [
   },
   {
     id: 0,
-    title: "Cedro",
+    title: "Fortaleza",
     origin: city.CEDRO,
-    hors: [
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "06:00",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "06:35",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "07:10",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "07:35",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "08:00",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "08:20",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "09:20",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "08:40",
-        day: "Segunda",
-      },
-      {
-        destinyId: city.CEDRO.id,
-        title: "Carius",
-        hours: "09:40",
-        day: "Segunda",
-      },
-    ],
     url: "https://a.cdn-hotels.com/gdcs/production178/d1743/caf5443a-60c8-442a-bca4-ae9afc154fea.jpg?impolicy=fcrop&w=800&h=533&q=medium",
+  },
+  {
+    id: 0,
+    title: "Várzea Alegre",
+    origin: city.CEDRO,
+    url: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRbTAw4Bv0Bm35DaWsVy7tRrkRwPRilHI0wfPxZixerWfRhBkottj8nUdAEFHG-uA0waeSCnYimll2aAGLbNsls8T6_Z5PzyujQpIVBVg",
+  },
+  {
+    id: 0,
+    title: "Acopiara",
+    origin: city.CEDRO,
+    url: "https://storage.alboom.ninja/sites/3886/albuns/993046/mrc-802.jpg?t=1650124867",
   },
 ];

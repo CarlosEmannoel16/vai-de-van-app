@@ -55,6 +55,4 @@ export function MyTabBar({ state, descriptors, navigation }) {
   );
 }
 
-<Tab.Navigator
-  tabBar={(props) => <MyTabBar {...props} />}
-></Tab.Navigator>;
+<Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}></Tab.Navigator>;

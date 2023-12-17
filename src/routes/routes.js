@@ -1,53 +1,57 @@
+import { useContext } from "react";
 import Home from "../screens/Home/Home";
 import ListTravels from "../screens/ListTravel/ListTravels";
 import { MyTravels } from "../screens/MyTravels/MyTravels";
 import Profile from "../screens/Profile/Profile";
 import { Ionicons } from "@expo/vector-icons";
-
-export const Routes = [
-  {
-    name: "Home",
-    component: Home,
-    options: {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name="search" size={size} color={color} />
-      ),
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
+export const routes = () => {
+  return [
+    {
+      name: "Inicio",
+      component: Home,
+      options: {
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons name="map-search" size={24} color="#fff" />
+        ),
+      },
     },
-  },
-  {
-    name: "Viagens",
-    component: ListTravels,
-    options: {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name="bus" size={size} color={color} />
-      ),
+    {
+      name: "Viagens",
+      component: ListTravels,
+      options: {
+        tabBarIcon: ({ size, color }) => (
+          <Ionicons name="bus" size={size} color="#FFF" />
+        ),
+      },
     },
-  },
-  {
-    name: "Perfil",
-    component: Profile,
-    options: {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name="person" size={size} color={color} />
-      ),
+    {
+      name: "Minhas Viagens",
+      component: MyTravels,
+      options: {
+        tabBarIcon: ({ size, color }) => (
+          <Fontisto name="bus-ticket" size={24} color="#FFF" />
+        ),
+      },
     },
-  },
-  {
-    name: "Lista",
-    component: ListTravels,
-    options: {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name="log-out-outline" size={size} color={color} />
-      ),
+    {
+      name: "Perfil",
+      component: Profile,
+      options: {
+        tabBarIcon: ({ size, color }) => (
+          <Ionicons name="person" size={size} color="#FFF" />
+        ),
+      },
     },
-  },
-  {
-    name: "Minhas Viagens",
-    component: MyTravels,
-    options: {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name="log-out-outline" size={size} color={color} />
-      ),
-    },
-  },
-];
+    // {
+    //   name: "Lista",
+    //   component: ListTravels,
+    //   options: {
+    //     tabBarIcon: ({ size, color }) => (
+    //       <Ionicons name="log-out-outline" size={size} color={color} />
+    //     ),
+    //   },
+    // },
+  ];
+};

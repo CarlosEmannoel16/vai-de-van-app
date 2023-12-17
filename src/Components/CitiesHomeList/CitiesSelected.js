@@ -1,27 +1,27 @@
 import { StyleSheet, View, Text, ImageBackground } from "react-native";
 import { cities } from "../../../database/hors";
+import { CardCityHomeStyled } from "./CardCityHome.styled";
 
 export default CitieSelecteView = () => {
   const Item = ({ title, url, index }) => {
     return (
-      <View
-        style={{
-          ...styles.item,
-        }}
-        key={index}
-      >
+      <CardCityHomeStyled key={index}>
         <ImageBackground
           source={{
             uri: url,
           }}
-          borderRadius={6}
+          borderRadius={0}
           style={{
             height: "100%",
             width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            filter: "blur(4)",
           }}
-        />
-        <Text style={styles.textItem}>{title}</Text>
-      </View>
+        >
+          <Text style={styles.textItem}>{title}</Text>
+        </ImageBackground>
+      </CardCityHomeStyled>
     );
   };
 
@@ -49,27 +49,17 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: "#222689",
   },
-  item: {
-    borderRadius: 4,
-    shadowColor: "#000",
-    shadowOffset: { width: 3, height: 2 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    marginBottom: 10,
-    borderRadius: 6,
-    gap: 2,
-    width: `48%`,
-    aspectRatio: 1, // Mantém uma proporção 1:1 para criar células quadradas
-  },
+
   itemInternal: {
     width: "100%",
     height: "100%",
   },
   textItem: {
-    fontSize: 10,
-    width: 70,
+    fontSize: 20,
+    width: 120,
     textAlign: "center",
     color: "#fff",
+    fontWeight: "600",
   },
   listContainer: {
     backgroundColor: "#fff",
