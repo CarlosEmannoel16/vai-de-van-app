@@ -11,7 +11,6 @@ export const HeaderListTravelsStyled = styled.View`
   padding-right: 10px;
   padding-left: 10px;
   padding-top: 20px;
-  margin-bottom: 40px;
 `;
 
 export const TextTitleStyled = styled.Text`

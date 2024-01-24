@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
+import "react-native-gesture-handler";
 
 import { TravelSearchContextProvider } from "./src/hooks/TravelsSearch";
 import { NavigationMenu } from "./src/navigations/Navigation";

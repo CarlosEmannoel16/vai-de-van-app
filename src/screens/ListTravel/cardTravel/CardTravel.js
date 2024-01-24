@@ -2,7 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 import {
   ButtonCardTravelStyled,
   CardTravelStyled,
+  InformationCenterInternCardTravelStyled,
   InformationExternalCardTravelStyled,
+  InformationInternCardTravelStyled,
+  NameCityStyled,
+  TextButtonSelectStyled,
   TitleAreaCardTravelStyled,
   TitleCardInternTravelStyled,
 } from "./cardTravel.styled";
@@ -17,68 +21,60 @@ export const CardTravel = ({ value, nameOrigin, nameDestiny }) => {
         </TitleCardInternTravelStyled>
       </TitleAreaCardTravelStyled>
       <InformationExternalCardTravelStyled>
-        <View
-          style={{
-            borderBottomColor: "#00000020",
-            borderBottomWidth: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <Text>
-            Saída: <Text style={styles.textBold}> 12:00hs</Text>
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "left",
-            width: "50%",
-          }}
-        >
+        <InformationInternCardTravelStyled>
+          <NameCityStyled>{nameOrigin}</NameCityStyled>
           <Text
             style={{
-              marginLeft: 1,
+              fontSize: 12,
+              color: "#000",
             }}
           >
-            <MaterialCommunityIcons name="bus-marker" size={24} color="black" />{" "}
-            {nameOrigin}
+            13:00hs
           </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "left",
-            width: "50%",
-          }}
-        >
-          <Entypo name="dots-three-vertical" size={24} color="black" />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "left",
-            width: "50%",
-          }}
-        >
+        </InformationInternCardTravelStyled>
+        <InformationInternCardTravelStyled>
+          <View style={{ flexDirection: "row" }}>
+            <MaterialCommunityIcons
+              name="bus-stop-covered"
+              size={24}
+              color="black"
+            />
+            <Entypo name="dots-three-horizontal" size={24} color="black" />
+            <Entypo name="dots-three-horizontal" size={24} color="black" />
+            <MaterialCommunityIcons
+              name="bus-articulated-front"
+              size={24}
+              color="black"
+            />
+          </View>
           <Text
             style={{
-              marginLeft: 1,
+              fontSize: 12,
+              color: "#000",
+              textAlign: "center",
             }}
           >
-            <MaterialCommunityIcons name="bus-marker" size={24} color="black" />
-            {nameDestiny}
+            3hs e 30min de viagem
           </Text>
-        </View>
+        </InformationInternCardTravelStyled>
+        <InformationInternCardTravelStyled>
+          <NameCityStyled>{nameDestiny}</NameCityStyled>
+          <Text
+            style={{
+              fontSize: 12,
+              color: "#000",
+            }}
+          >
+            14:00hs
+          </Text>
+        </InformationInternCardTravelStyled>
       </InformationExternalCardTravelStyled>
+
+      <Text>12 vagas disponiveis</Text>
+      <Text>7 paradas até o destino</Text>
+
       <ButtonCardTravelStyled>
-        <Text style={{ ...styles.textWhite, ...styles.fontButton }}>
-          Selecionar
-        </Text>
+        <TextButtonSelectStyled>Selecionar</TextButtonSelectStyled>
       </ButtonCardTravelStyled>
     </CardTravelStyled>
   );

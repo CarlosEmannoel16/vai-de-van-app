@@ -11,7 +11,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 export default HeaderInitial = () => {
   const navigation = useNavigation();
 
-  const { setTravelsSearch } = useContext(TravelsSearchContext);
+  const { setTravelsSearch, setDestines, setInSearch } =
+    useContext(TravelsSearchContext);
 
   const [dateOfTravel, setDateOfTravel] = useState(new Date());
   const [cityOrigin, setCityOrigin] = useState("");
@@ -42,8 +43,18 @@ export default HeaderInitial = () => {
         dateOfTravel.getDate(),
     })
       .then((res) => {
+        if (!res.data.data.length) {
+          Alert.alert("Nenhuma viagem encontrada");
+          return;
+        }
         setTravelsSearch(res.data.data);
-        if (res.data.data.length()) navigation.navigate("Viagens");
+        setDestines({
+          origin: cities.filter((city) => city?.value == cityOrigin)[0]?.label,
+          destiny: cities.filter((city) => city?.value == cityDestiny)[0]
+            ?.label,
+        });
+        navigation.navigate("Viagens");
+        setInSearch(true);
       })
       .catch((err) => {
         Alert.alert("Nenhuma viagem encontrada");

@@ -1,4 +1,6 @@
 import {
+  ActivityIndicator,
+  Alert,
   Modal,
   Pressable,
   StyleSheet,
@@ -6,11 +8,15 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { useState } from "react";
-import { Picker } from "@react-native-picker/picker";
+import { useEffect, useState } from "react";
 import {
   AreaMyInputSelectStyled,
+  AreaOptionsModalStyled,
+  AreaSearchSelectedModalStyled,
+  BodyModalStyled,
+  InputTextSearchStyled,
   MyInputSelectButtonStyled,
+  OptionSelectStyled,
 } from "./select.styled";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -25,7 +31,25 @@ export const InputSelect = ({
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setItemSelected] = useState({});
+  const [citiesView, setCitiesView] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setCitiesView(data.slice(0, 10));
+  }, [data]);
+  data.slice(0, 10);
+  const SearchCity = (text) => {
+    setLoading(true);
+    setCitiesView(
+      data
+        .filter((city) =>
+          city.label.toLowerCase().includes(text?.toLowerCase())
+        )
+        .slice(0, 10)
+    );
+    setLoading(false);
+  };
   return (
     <AreaMyInputSelectStyled>
       {Icon}
@@ -67,17 +91,31 @@ export const InputSelect = ({
             <Text style={styles.textStyle}>Salvar</Text>
           </Pressable>
         </View>
-        <Picker
-          selectedValue={value}
-          onValueChange={(itemValue, itemIndex) => {
-            setValue(itemValue);
-            setItemSelected(data[itemIndex]);
-          }}
-        >
-          {data?.map((item, index) => (
-            <Picker.Item key={index} label={item.label} value={item.value} />
-          ))}
-        </Picker>
+        <BodyModalStyled>
+          <AreaSearchSelectedModalStyled>
+            <InputTextSearchStyled
+              placeholder="Buscar"
+              onChange={(e) => SearchCity(e.nativeEvent.text)}
+            />
+          </AreaSearchSelectedModalStyled>
+          {loading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : (
+            <AreaOptionsModalStyled>
+              {citiesView.map((city) => (
+                <OptionSelectStyled
+                  onPress={() => {
+                    setValue(city.value);
+                    setItemSelected(city);
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <Text>{city.label}</Text>
+                </OptionSelectStyled>
+              ))}
+            </AreaOptionsModalStyled>
+          )}
+        </BodyModalStyled>
       </Modal>
     </AreaMyInputSelectStyled>
   );
@@ -94,6 +132,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 10,
     alignItems: "center",
+    justifyContent: "center",
     shadowColor: "#000",
     width: "100%",
     height: "100%",
