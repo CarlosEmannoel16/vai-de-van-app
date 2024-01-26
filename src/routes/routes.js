@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Home from "../screens/Home/Home";
 import ListTravels from "../screens/ListTravel/ListTravels";
 import { MyTravels } from "../screens/MyTravels/MyTravels";

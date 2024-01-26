@@ -6,6 +6,7 @@ import "react-native-gesture-handler";
 import { TravelSearchContextProvider } from "./src/hooks/TravelsSearch";
 import { NavigationMenu } from "./src/navigations/Navigation";
 import { UserContextProvider } from "./src/hooks/UserContext";
+import { PageHome } from "./src/Components/pages/Home";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +25,8 @@ export default function App() {
             backgroundColor: "#10112C",
           }}
         >
-          <NavigationMenu />
+          <PageHome />
+
           <StatusBar translucent={true} style={"inverted"} />
         </SafeAreaView>
       </TravelSearchContextProvider>
