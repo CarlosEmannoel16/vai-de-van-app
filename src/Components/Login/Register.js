@@ -2,32 +2,12 @@ import { Text, TextInput, TouchableOpacity } from "react-native";
 import { ViewLoginStyled } from "./login.styled";
 import { AntDesign } from "@expo/vector-icons";
 import { useState } from "react";
-import { Register } from "./Register";
-export const Login = () => {
-  const [inLogin, setInLogin] = useState(false);
-  return !inLogin ? (
+export const Register = () => {
+  return (
     <ViewLoginStyled>
-      <AntDesign
-        name="user"
-        size={64}
-        color="orange"
-        style={{
-          marginBottom: 20,
-        }}
-      />
-      <Text
-        style={{
-          fontSize: 20,
-          textAlign: "center",
-          marginBottom: 20,
-          color: "#000",
-        }}
-      >
-        Você não está autenticado, realize login para uma melhor experiência
-      </Text>
       <TextInput
-        keyboardType="visible-password"
-        placeholder="Login"
+        keyboardType="default"
+        placeholder="Nome"
         style={{
           height: 50,
           borderWidth: 1,
@@ -38,6 +18,21 @@ export const Login = () => {
           marginBottom: 10,
         }}
       />
+
+      <TextInput
+        keyboardType="default"
+        placeholder="Sobrenome"
+        style={{
+          height: 50,
+          borderWidth: 1,
+          borderColor: "#00000050",
+          width: "100%",
+          padding: 10,
+          borderRadius: 5,
+          marginBottom: 10,
+        }}
+      />
+
       <TextInput
         keyboardType="visible-password"
         placeholder="Senha"
@@ -50,6 +45,7 @@ export const Login = () => {
           borderRadius: 5,
         }}
       />
+
       <TouchableOpacity
         style={{
           backgroundColor: "#000",
@@ -67,7 +63,7 @@ export const Login = () => {
             fontSize: 20,
           }}
         >
-          Entrar
+          Cadastre-se
         </Text>
       </TouchableOpacity>
       <Text
@@ -77,10 +73,8 @@ export const Login = () => {
           color: "#000",
         }}
       >
-        Ou Cadastre-se
+        Ou Realize login
       </Text>
     </ViewLoginStyled>
-  ) : (
-    <Register />
   );
 };

@@ -1,3 +1,3 @@
 export const URLS = {
-  ApiUrl: "http://localhost:4000",
+  ApiUrl: "http://172.16.2.164:4000",
 };
