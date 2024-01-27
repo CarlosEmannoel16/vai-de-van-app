@@ -10,8 +10,8 @@ export const HeaderHome = () => {
 };
 
 const HeaderArea = styled.View`
-  flex: 1;
   align-items: center;
   justify-content: center;
+  height: 90px;
   width: 100%;
-background-color: #10112C`;
+`;

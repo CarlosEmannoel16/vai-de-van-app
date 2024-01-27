@@ -12,10 +12,10 @@ export const HomeTitle = () => {
 const TextTitle = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  color: #fff;
+  color: #141414;
 `;
 const SubTextTitle = styled.Text`
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: #000;
 `;

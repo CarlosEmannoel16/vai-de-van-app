@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { TravelsSearchContext } from "../hooks/TravelsSearch";
 import { useContext, useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { PageHome } from "../Components/pages/Home";
 
 export const NavigationMenu = () => {
   const Stack = createStackNavigator();
@@ -48,16 +49,10 @@ export const NavigationMenu = () => {
             },
           }}
         >
-          {routesList.map((route) => {
-            if (route.name === "Viagens" && travelsSearch.length === 0) return;
-            return (
-              <Tab.Screen
-                name={route.name}
-                component={route.component}
-                options={route.options}
-              />
-            );
-          })}
+          <Tab.Screen
+            name={"Home"}
+            component={PageHome}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </>

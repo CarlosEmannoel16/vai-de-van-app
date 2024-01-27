@@ -25,7 +25,8 @@ export default function App() {
             backgroundColor: "#10112C",
           }}
         >
-          <PageHome />
+          <NavigationMenu />
+         
 
           <StatusBar translucent={true} style={"inverted"} />
         </SafeAreaView>

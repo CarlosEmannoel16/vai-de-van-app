@@ -1,20 +1,21 @@
 import styled from "styled-components/native";
 import { HeaderHome } from "../organism/HeaderHome";
 import { AreaSearchHome } from "../organism/AreaSearchHome";
+import { CardsHome } from "../organism/CardsHome";
 
 export const PageHome = () => {
+  
   return (
     <HomeArea>
       <HeaderHome />
       <AreaSearchHome />
+      <CardsHome />
     </HomeArea>
   );
 };
 
-const HomeArea = styled.View`
+const HomeArea = styled.ScrollView`
   flex: 1;
-  align-items: center;
-  justify-content: flex-start;
   width: 100%;
   background-color: #fff;
 `;

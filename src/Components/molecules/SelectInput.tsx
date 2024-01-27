@@ -1,27 +1,106 @@
 import styled from "styled-components/native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather, FontAwesome5 } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, Text } from "react-native";
 
 interface IInputSelect {
   icon?: "Origin" | "Destination";
   value?: string;
   label?: string;
+  data: any[];
+  setValue: (data: string) => void;
 }
-export const InputSelect = ({ icon, value, label }: IInputSelect) => {
+export const InputSelect = ({
+  icon,
+  value,
+  label,
+  data,
+  setValue,
+}: IInputSelect) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItem, setItemSelected] = useState({});
+  const [citiesView, setCitiesView] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setCitiesView(data.slice(0, 10));
+  }, [data]);
+
+  const SearchCity = (text) => {
+    setLoading(true);
+    setCitiesView(
+      data
+        .filter((city) => city.name.toLowerCase().includes(text?.toLowerCase()))
+        .slice(0, 10)
+    );
+    setLoading(false);
+  };
+  console.log(citiesView);
   return (
-    <Input>
-      <FontAwesome5 name="bus" size={24} color="black" />
-      <AreaText>
-        <Placeholder>{label}</Placeholder>
-        <PlaceholderValue>{value}</PlaceholderValue>
-      </AreaText>
-    </Input>
+    <>
+      <Input onPress={() => setModalVisible(true)}>
+        <FontAwesome5 name="bus" size={24} color="black" />
+        <AreaText>
+          <Placeholder>{label}</Placeholder>
+          <PlaceholderValue>{value}</PlaceholderValue>
+        </AreaText>
+      </Input>
+      <ModalView
+        animationType="slide"
+        presentationStyle="pageSheet"
+        visible={modalVisible}
+        onRequestClose={() => {
+          //Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <HeaderModal>
+          <AreaViewReturn>
+            <CloseButton onPress={() => setModalVisible(!modalVisible)}>
+              <TextCloseButton>
+                <Feather name="arrow-left" size={24} color="black" />
+              </TextCloseButton>
+            </CloseButton>
+            <TextReturn>{label}</TextReturn>
+          </AreaViewReturn>
+        </HeaderModal>
+        <BodyModalStyled>
+          <AreaSearchSelectedModalStyled>
+            <InputTextSearchStyled
+              placeholder="Buscar"
+              onChange={(e) => SearchCity(e.nativeEvent.text)}
+            />
+          </AreaSearchSelectedModalStyled>
+          {loading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : (
+            <AreaOptionsModalStyled>
+              {citiesView.map((city) => {
+                console.log(city.name.toLowerCase());
+                return (
+                  <OptionSelectStyled
+                    onPress={() => {
+                      setValue(city.value);
+                      setItemSelected(city);
+                      setModalVisible(!modalVisible);
+                    }}
+                  >
+                    <Text>{city.name}</Text>
+                  </OptionSelectStyled>
+                );
+              })}
+            </AreaOptionsModalStyled>
+          )}
+        </BodyModalStyled>
+      </ModalView>
+    </>
   );
 };
 
-export const Input = styled.View`
+export const Input = styled.TouchableOpacity`
   height: 55px;
   flex-direction: row;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 100%;
   align-items: center;
   border-color: #8a8a8a60;
@@ -48,4 +127,80 @@ const PlaceholderValue = styled.Text`
   font-size: 14px;
   font-weight: 600;
   color: #646262;
+`;
+
+const ModalView = styled.Modal`
+  background-color: white;
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const HeaderModal = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+`;
+
+const CloseButton = styled.TouchableOpacity`
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #00000030;
+  border-radius: 30px;
+`;
+
+const BodyModalStyled = styled.View`
+  flex: 1;
+  width: 100%;
+  padding: 10px;
+`;
+
+const AreaSearchSelectedModalStyled = styled.View`
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+`;
+
+const InputTextSearchStyled = styled.TextInput`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #00000030;
+  padding: 10px;
+`;
+
+const AreaOptionsModalStyled = styled.ScrollView`
+  width: 100%;
+  height: 100%;
+`;
+
+const OptionSelectStyled = styled.TouchableOpacity`
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 5px;
+`;
+
+const TextCloseButton = styled.Text`
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+`;
+
+const AreaViewReturn = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+`;
+const TextReturn = styled.Text`
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
 `;
