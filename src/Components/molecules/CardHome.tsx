@@ -6,7 +6,7 @@ export const CardHome = ({ url }) => {
   return (
     <CardHomeArea source={{ uri: url }}>
       <NameCardHome name="Rio de Janeiro"/>
-      <PriceCardHome label="Apartir de" value="R$ 123,00" />
+      <PriceCardHome label="A partir de" value="R$ 123,00" />
     </CardHomeArea>
   );
 };

@@ -2,8 +2,11 @@ import styled from "styled-components/native";
 import { HeaderHome } from "../organism/HeaderHome";
 import { AreaSearchHome } from "../organism/AreaSearchHome";
 import { CardsHome } from "../organism/CardsHome";
+import { useContext } from "react";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 
 export const PageHome = () => {
+
   
   return (
     <HomeArea>

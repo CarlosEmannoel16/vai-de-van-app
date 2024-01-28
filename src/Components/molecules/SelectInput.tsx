@@ -8,7 +8,7 @@ interface IInputSelect {
   value?: string;
   label?: string;
   data: any[];
-  setValue: (data: string) => void;
+  setValue: (data: {}) => void;
 }
 export const InputSelect = ({
   icon,
@@ -80,7 +80,10 @@ export const InputSelect = ({
                 return (
                   <OptionSelectStyled
                     onPress={() => {
-                      setValue(city.value);
+                      setValue({
+                        label: city.name,
+                        value: city.id,
+                      });
                       setItemSelected(city);
                       setModalVisible(!modalVisible);
                     }}

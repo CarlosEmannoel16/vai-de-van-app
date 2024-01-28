@@ -1,6 +1,17 @@
 import { Http } from "../@shared/Http";
 
-export class TravelServiceHttp extends Http {
+
+export interface TravelServiceHttpProtocol{
+  search({ origin, destiny, dateOfTravel }): Promise<any>;
+  getAll(): Promise<any>;
+  getById({ id }): Promise<any>;
+  create({ origin, destiny, dateOfTravel, timeOfTravel, price }): Promise<any>;
+  update({ id, origin, destiny, dateOfTravel, timeOfTravel, price }): Promise<any>;
+  delete({ id }): Promise<any>;
+  changeStatus({ id, status }): Promise<any>;
+}
+
+export class TravelServiceHttp extends Http implements TravelServiceHttpProtocol{
   constructor() {
     super();
   }

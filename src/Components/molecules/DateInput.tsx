@@ -16,7 +16,6 @@ interface Props {
 
 export const DateInput = ({
   date,
-  icon,
   label,
   modalLabel,
   setDate,

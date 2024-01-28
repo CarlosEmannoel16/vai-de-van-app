@@ -3,10 +3,23 @@ import { InputSelect } from "../molecules/SelectInput";
 import { ButtonSearch } from "../molecules/ButtonSearch";
 import { DateInput } from "../molecules/DateInput";
 import CityServiceHttp from "../../services/Cities/CityServiceHttp";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
+import TravelServiceHttp from "../../services/Travels/TravelService";
+import { Alert } from "react-native";
 
 export const AreaSearchHome = () => {
   const [cities, setCities] = useState([]);
+  const { setDestines } = useContext(TravelsSearchContext);
+  const [origin, setOrigin] = useState({
+    label: "São Paulo",
+    value: "São Paulo",
+  });
+  const [destiny, setDestiny] = useState({
+    label: "São Paulo",
+    value: "São Paulo",
+  });
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     CityServiceHttp.getAllCities().then((res) => {
@@ -14,32 +27,50 @@ export const AreaSearchHome = () => {
     });
   }, []);
 
+  const onSubmit = () => {
+    setDestines({ origin, destiny });
+    console.log(date);
+    console.log(destiny);
+
+    TravelServiceHttp.search({
+      dateOfTravel: date.toISOString().split('T')[0],
+      destiny: destiny.value,
+      origin: origin.value,
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <AreaSearch>
       <LimitedArea>
         <InputSelect
           label="Origem"
-          value="Juazeiro do Norte"
+          value={origin.label}
           data={cities}
-          setValue={() => {}}
+          setValue={setOrigin}
           icon="Origin"
         />
         <InputSelect
           label="Destino"
-          value="São Paulo"
+          value={destiny.label}
           data={cities}
-          setValue={() => {}}
+          setValue={setDestiny}
           icon="Origin"
         />
         <DateInput
-          date={new Date()}
+          date={date}
           modalLabel="Data da viagem"
-          setDate={() => {}}
+          setDate={setDate}
           label="Data da viagem"
-          value={new Date().toLocaleString("pt-br")}
+          value={date.toLocaleString("pt-br")}
           icon=""
         />
-        <ButtonSearch />
+        <ButtonSearch onSubmit={onSubmit} />
       </LimitedArea>
     </AreaSearch>
   );

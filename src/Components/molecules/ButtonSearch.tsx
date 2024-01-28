@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
-export const ButtonSearch = () => {
+export const ButtonSearch = ({onSubmit}) => {
     return (
-        <ButtonSearchArea>
+        <ButtonSearchArea onPress={onSubmit}>
         <ButtonSearchText>Buscar</ButtonSearchText>
         </ButtonSearchArea>
     );
