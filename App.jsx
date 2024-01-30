@@ -22,13 +22,13 @@ export default function App() {
           style={{
             flex: 1,
             fontFamily: "Poppins-Regular",
-            backgroundColor: "#10112C",
+            backgroundColor: "#fff",
           }}
         >
           <NavigationMenu />
          
 
-          <StatusBar translucent={true} style={"inverted"} />
+          <StatusBar translucent={true} style={"dark"} />
         </SafeAreaView>
       </TravelSearchContextProvider>
     </UserContextProvider>

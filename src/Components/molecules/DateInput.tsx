@@ -4,6 +4,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
 import { Text, View } from "react-native";
+import { ButtonBack } from "../atoms/ButtonBack";
 
 interface Props {
   modalLabel: string;
@@ -44,11 +45,8 @@ export const DateInput = ({
       >
         <HeaderModal>
           <AreaViewReturn>
-            <CloseButton onPress={() => setModalVisible(!modalVisible)}>
-              <TextCloseButton>
-                <Feather name="arrow-left" size={24} color="black" />
-              </TextCloseButton>
-            </CloseButton>
+            <ButtonBack key={1} action={() => setModalVisible(!modalVisible)} />
+
             <TextReturn>{modalLabel}</TextReturn>
           </AreaViewReturn>
           <ModalLabel></ModalLabel>
@@ -64,7 +62,7 @@ export const DateInput = ({
           }}
           textColor="#000"
           minimumDate={new Date()}
-          style={{ padding: 90, marginTop: 60}}
+          style={{ padding: 90, marginTop: 60 }}
         />
       </ModalView>
     </>
@@ -119,20 +117,7 @@ const HeaderModal = styled.View`
   padding: 10px;
 `;
 
-const CloseButton = styled.TouchableOpacity`
-  padding: 10px;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #00000030;
-  border-radius: 30px;
-  box-shadow: 0px 0px 2px #00000030;
-`;
 
-const TextCloseButton = styled.Text`
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-`;
 
 const ModalLabel = styled.Text`
   font-size: 14px;

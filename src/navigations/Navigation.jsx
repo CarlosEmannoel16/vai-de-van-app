@@ -5,6 +5,8 @@ import { TravelsSearchContext } from "../hooks/TravelsSearch";
 import { useContext, useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { PageHome } from "../Components/pages/Home";
+import { HeaderSearchDetails } from "../Components/organism/HeaderSearchDetails";
+import { SearchTravels } from "../Components/pages/SearchTravels";
 
 export const NavigationMenu = () => {
   const Stack = createStackNavigator();
@@ -52,6 +54,10 @@ export const NavigationMenu = () => {
           <Tab.Screen
             name={"Home"}
             component={PageHome}
+          />
+          <Tab.Screen
+            name={"Busca"}
+            component={SearchTravels}
           />
         </Tab.Navigator>
       </NavigationContainer>
