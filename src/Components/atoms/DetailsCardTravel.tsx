@@ -1,10 +1,11 @@
 import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-export const DetailsCardTravel = ({}) => {
+
+export const DetailsCardTravel = ({ label }) => {
   return (
     <AreaDetails>
       <MaterialCommunityIcons name="bus-multiple" size={24} color="black" />
-      <TextCity>Juazeiro do Norte</TextCity>
+      <TextCity>{label}</TextCity>
       <TextHour>05:45</TextHour>
     </AreaDetails>
   );

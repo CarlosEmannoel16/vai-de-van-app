@@ -1,17 +1,22 @@
 import styled from "styled-components/native";
 import { HeaderSearchDetails } from "../organism/HeaderSearchDetails";
 import { CardTravel } from "../organism/CardTravel";
+import { useContext } from "react";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
+import { FlatList } from "react-native-gesture-handler";
 
 export const SearchTravels = () => {
+  const { travelsSearch } = useContext(TravelsSearchContext);
+
+  
   return (
     <AreaSearch>
-      <HeaderSearchDetails cityName="Juazeiro do Norte" date="12/01/2023" />
-      <AreaCard>
-        <CardTravel />
-        <CardTravel />
-        <CardTravel />
-        
-      </AreaCard>
+      <HeaderSearchDetails />
+      <FlatListTravels
+        data={travelsSearch}
+        renderItem={({ item }: any) => <CardTravel value={item.value} />}
+        keyExtractor={(item) => item.id}
+      />
     </AreaSearch>
   );
 };
@@ -21,11 +26,12 @@ const AreaSearch = styled.View`
   width: 100%;
   height: 100vh;
   background-color: #fff;
+  align-items: center;
 `;
 
-const AreaCard = styled.ScrollView`
+const FlatListTravels = styled.FlatList`
   display: flex;
   height: 90%;
-  width: 100%;
+  width: 98%;
   padding: 10px;
 `;

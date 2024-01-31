@@ -6,11 +6,11 @@ import CityServiceHttp from "../../services/Cities/CityServiceHttp";
 import { useContext, useEffect, useState } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import TravelServiceHttp from "../../services/Travels/TravelService";
-import { Alert } from "react-native";
 
 export const AreaSearchHome = () => {
   const [cities, setCities] = useState([]);
-  const { setDestines } = useContext(TravelsSearchContext);
+  const { setDestines, setInSearch, setTravelsSearch } =
+    useContext(TravelsSearchContext);
   const [origin, setOrigin] = useState({
     label: "São Paulo",
     value: "São Paulo",
@@ -29,19 +29,18 @@ export const AreaSearchHome = () => {
 
   const onSubmit = () => {
     setDestines({ origin, destiny });
-    console.log(date);
-    console.log(destiny);
 
     TravelServiceHttp.search({
-      dateOfTravel: date.toISOString().split('T')[0],
+      dateOfTravel: date.toISOString().split("T")[0],
       destiny: destiny.value,
       origin: origin.value,
     })
       .then((res) => {
-        console.log(res.data);
+        setTravelsSearch(res.data.data);
+        setInSearch(true);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("=======>", err);
       });
   };
 

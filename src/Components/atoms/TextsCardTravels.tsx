@@ -4,7 +4,7 @@ interface Props {
   value: string;
 }
 
-export const TextsCardTravels = ({ value }: Props) => {
+export const TextsCardTravels = ({ value = "" }: Props) => {
   return (
     <DetailsArea>
       <TextValue>{value}</TextValue>

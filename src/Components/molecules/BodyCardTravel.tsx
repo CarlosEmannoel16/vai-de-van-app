@@ -1,13 +1,19 @@
 import styled from "styled-components/native";
 import { DetailsCardTravel } from "../atoms/DetailsCardTravel";
 import { DetailsDateTravelCard } from "../atoms/DetailsDateTravelCard";
+import { useContext } from "react";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 
-export const BodyCardTravel = ({}) => {
+export const BodyCardTravel = () => {
+  const { destines } = useContext(TravelsSearchContext);
+  const destine = destines.destiny.label;
+  const origin = destines.origin.label;
+
   return (
     <AreaBody>
-      <DetailsCardTravel />
+      <DetailsCardTravel label={origin} />
       <DetailsDateTravelCard />
-      <DetailsCardTravel />
+      <DetailsCardTravel  label={destine} />
     </AreaBody>
   );
 };

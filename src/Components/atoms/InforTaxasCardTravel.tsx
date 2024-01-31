@@ -1,10 +1,15 @@
 import styled from "styled-components/native";
 
-export const InfoTaxasCardTravel = ({}) => {
+interface Props {
+  label: string;
+  value: string;
+}
+
+export const InfoTaxasCardTravel = ({ label, value }: Props) => {
   return (
     <AreaInfo>
-      <TextInfo>2 adultos</TextInfo>
-      <TextValueInfo>R$ 123,00</TextValueInfo>
+      <TextInfo>{label}</TextInfo>
+      <TextValueInfo>{value}</TextValueInfo>
     </AreaInfo>
   );
 };
@@ -13,7 +18,7 @@ const AreaInfo = styled.View`
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 `;

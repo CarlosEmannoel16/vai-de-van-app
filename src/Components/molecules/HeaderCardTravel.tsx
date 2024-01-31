@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 import { TextsCardTravels } from "../atoms/TextsCardTravels";
 
-export const HeaderCardTravel = ({}) => {
+export const HeaderCardTravel = ({ value = "" }) => {
   return (
     <AreaHeader>
-      <TextsCardTravels value="R$ 123,00" />
+      <TextsCardTravels value={value} />
     </AreaHeader>
   );
 };

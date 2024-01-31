@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, Text } from "react-native";
 import { ButtonBack } from "../atoms/ButtonBack";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 
 interface IInputSelect {
   icon?: "Origin" | "Destination";
@@ -18,6 +19,8 @@ export const InputSelect = ({
   data,
   setValue,
 }: IInputSelect) => {
+  const { setInSearch, inSearch } = useContext(TravelsSearchContext);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setItemSelected] = useState({});
   const [citiesView, setCitiesView] = useState([]);
@@ -36,7 +39,6 @@ export const InputSelect = ({
     );
     setLoading(false);
   };
-  console.log(citiesView);
   return (
     <>
       <Input onPress={() => setModalVisible(true)}>

@@ -16,17 +16,18 @@ export default ListTravels = () => {
         refreshControl={<RefreshControl />}
       >
         <View style={{ width: "100%", alignItems: "center" }}>
-          {travelsSearch.length > 0 &&
-            travelsSearch.map((travel) => {
-              console.log(travel);
-              return (
-                <CardTravel
-                  value={travel.value}
-                  nameOrigin={travel.nameOrigin}
-                  nameDestiny={travel.nameDestiny}
-                />
-              );
-            })}
+          {travelsSearch.length > 0
+            ? travelsSearch.map((travel) => {
+                console.log(travel);
+                return (
+                  <CardTravel
+                    value={travel.value}
+                    nameOrigin={travel.nameOrigin}
+                    nameDestiny={travel.nameDestiny}
+                  />
+                );
+              })
+            : null}
         </View>
       </ScrollView>
     </ListTravelStyled>
