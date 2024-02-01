@@ -17,7 +17,7 @@ const AreaTextValueFooter = styled.View`
   align-items: center;
   margin-top: 10px;
   padding: 10px;
-  background-color: #ea9270;
+  background-color: #9ca3af;
 `;
 
 const TextValueFooter = styled.Text`

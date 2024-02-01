@@ -13,8 +13,9 @@ export const SearchTravels = () => {
     <AreaSearch>
       <HeaderSearchDetails />
       <FlatListTravels
+       showsVerticalScrollIndicator={false}
         data={travelsSearch}
-        renderItem={({ item }: any) => <CardTravel value={item.value} />}
+        renderItem={({ item }: any) => <CardTravel value={item.value} travel={item} />}
         keyExtractor={(item) => item.id}
       />
     </AreaSearch>

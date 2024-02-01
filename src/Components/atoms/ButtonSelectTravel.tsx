@@ -1,17 +1,25 @@
+import { useNavigation, useLinkTo } from "@react-navigation/native";
 import styled from "styled-components/native";
 
-export const ButtonSelectTravel = ({label = "Selecionar"}) => {
-    return (
-        <AreaButton>
-        <TextButton>{label}</TextButton>
-        </AreaButton>
-    );
-}
+export const ButtonSelectTravel = ({ label = "Selecionar", handler }) => {
+  const linkTo = useLinkTo();
+
+  return (
+    <AreaButton
+      onPress={() => {
+        handler();
+        linkTo("/Pagamento");
+      }}
+    >
+      <TextButton>{label}</TextButton>
+    </AreaButton>
+  );
+};
 
 const AreaButton = styled.TouchableOpacity`
   display: flex;
-  width: 80%;
-  background-color: #000000;
+  width: 90%;
+  background-color: #10112C;
   align-items: center;
   justify-content: center;
   padding: 10px;
@@ -19,8 +27,8 @@ const AreaButton = styled.TouchableOpacity`
   margin-top: 10px;
 `;
 
-const TextButton = styled.Text` 
+const TextButton = styled.Text`
   font-size: 18px;
-  font-weight: 600; 
+  font-weight: 600;
   color: #fff;
 `;

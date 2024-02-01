@@ -10,6 +10,7 @@ export const TravelSearchContextProvider = ({ children }) => {
 
   const [inSearch, setInSearch] = useState(false);
   const [travelsSearch, setTravelsSearch] = useState([]);
+  const [travelSelected, setTravelSelected] = useState({});
 
   return (
     <TravelsSearchContext.Provider
@@ -20,6 +21,8 @@ export const TravelSearchContextProvider = ({ children }) => {
         destines,
         inSearch,
         setInSearch,
+        setTravelSelected,
+        travelSelected
       }}
     >
       {children}

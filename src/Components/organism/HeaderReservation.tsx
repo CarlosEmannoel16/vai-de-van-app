@@ -4,22 +4,25 @@ import { FontAwesome } from "@expo/vector-icons";
 import { ButtonBack } from "../atoms/ButtonBack";
 import { useContext } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
-export const HeaderSearchDetails = () => {
-  const { setInSearch, destinies } = useContext(TravelsSearchContext);
-  const { destines } = useContext(TravelsSearchContext);
-  const destine = destines.destiny.label;
-  const origin = destines.origin.label;
+import { useNavigation } from "@react-navigation/native";
+import { Text } from "react-native";
+export const HeaderReservation = () => {
+  const navigation = useNavigation();
+
   return (
     <AreaDetails>
-      <ButtonBack key={1} action={() => {setInSearch(false)}} />
-      <CitySearchDetails cityName={origin} date="01/02/2024" />
-      <FontAwesome name="arrow-right" size={24} color="black" />
-      <CitySearchDetails cityName={destine} date="01/02/2024" />
+      <ButtonBack
+        key={1}
+        action={() => {
+          navigation.goBack();
+        }}
+      />
+     
     </AreaDetails>
   );
 };
 
- const AreaDetails = styled.View`
+const AreaDetails = styled.View`
   position: fixed;
   width: 100%;
   display: flex;
@@ -27,8 +30,7 @@ export const HeaderSearchDetails = () => {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #fff;
   box-shadow: 1px 3px 4px #00000040;
+  background-color: #fff;
   z-index: 10;
- 
 `;

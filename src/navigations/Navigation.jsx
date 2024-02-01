@@ -8,6 +8,8 @@ import { PageHome } from "../Components/pages/Home";
 import { HeaderSearchDetails } from "../Components/organism/HeaderSearchDetails";
 import { SearchTravels } from "../Components/pages/SearchTravels";
 import { AntDesign } from "@expo/vector-icons";
+import { PaymentPage } from "../Components/pages/ReservationPage";
+import { Login } from "../Components/pages/Login";
 export const NavigationMenu = () => {
   const Stack = createStackNavigator();
 
@@ -55,7 +57,6 @@ export const NavigationMenu = () => {
           >
             <Tab.Screen
               name={"Home"}
-
               component={PageHome}
               options={{
                 tabBarLabel: "Inicio",
@@ -67,6 +68,19 @@ export const NavigationMenu = () => {
                 ),
               }}
             />
+            <Tab.Screen
+              name={"Login"}
+              component={Login}
+              options={{
+                tabBarLabel: "Login",
+                tabBarLabelStyle: {
+                  color: "#000",
+                },
+                tabBarIcon: ({ focused }) => (
+                  <AntDesign name="user" size={24} color="black" />
+                ),
+              }}
+            />
           </Tab.Navigator>
         ) : (
           <Stack.Navigator
@@ -75,6 +89,9 @@ export const NavigationMenu = () => {
             }}
           >
             <Stack.Screen name={"Busca"} component={SearchTravels} />
+            <Stack.Screen name={"Pagamento"} component={PaymentPage} />
+
+            <Stack.Screen name={"Login"} component={Login} />
           </Stack.Navigator>
         )}
       </NavigationContainer>

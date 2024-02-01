@@ -4,18 +4,26 @@ import { Text } from "react-native";
 import { BodyCardTravel } from "../molecules/BodyCardTravel";
 import { FootCardTravel } from "../molecules/FooterCardTravel";
 import { ButtonSelectTravel } from "../atoms/ButtonSelectTravel";
+import { useContext } from "react";
+import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 
 interface CardTravelProps {
   value: string;
+  travel: any;
 }
 
-export const CardTravel = ({ value = "" }: CardTravelProps) => {
+export const CardTravel = ({ value = "", travel }: CardTravelProps) => {
+  const { setTravelSelected } = useContext(TravelsSearchContext);
+  const handler = () => {
+    setTravelSelected(travel);
+  };
+
   return (
     <AreaCard>
       <HeaderCardTravel value={value} />
       <BodyCardTravel />
-      <FootCardTravel  value={value}/>
-      <ButtonSelectTravel />
+      <FootCardTravel value={value} />
+      <ButtonSelectTravel handler={handler} />
     </AreaCard>
   );
 };

@@ -30,7 +30,7 @@ export const DateInput = ({
         <FontAwesome5 name="calendar" size={24} color="black" />
         <AreaText>
           <Placeholder>{label}</Placeholder>
-          <PlaceholderValue>{value}</PlaceholderValue>
+          <PlaceholderValue>{value.split(", ")[0]}</PlaceholderValue>
         </AreaText>
       </Input>
 

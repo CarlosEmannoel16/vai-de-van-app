@@ -6,18 +6,19 @@ import CityServiceHttp from "../../services/Cities/CityServiceHttp";
 import { useContext, useEffect, useState } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import TravelServiceHttp from "../../services/Travels/TravelService";
+import { Alert } from "react-native";
 
 export const AreaSearchHome = () => {
   const [cities, setCities] = useState([]);
   const { setDestines, setInSearch, setTravelsSearch } =
     useContext(TravelsSearchContext);
   const [origin, setOrigin] = useState({
-    label: "São Paulo",
-    value: "São Paulo",
+    label: "Cedro",
+    value: "f3082c73-5f4a-426f-8c18-345d4a542b19",
   });
   const [destiny, setDestiny] = useState({
-    label: "São Paulo",
-    value: "São Paulo",
+    label: "Iguatu",
+    value: "88b8ee84-0707-4202-831a-89baedca7f73",
   });
   const [date, setDate] = useState(new Date());
 
@@ -36,8 +37,15 @@ export const AreaSearchHome = () => {
       origin: origin.value,
     })
       .then((res) => {
-        setTravelsSearch(res.data.data);
-        setInSearch(true);
+        if (res.data.data.length) {
+          setTravelsSearch(res.data.data);
+          setInSearch(true);
+          return;
+        }
+        Alert.alert(
+          "Nenhuma viagem encontrada",
+          "Tente novamente em outra data"
+        );
       })
       .catch((err) => {
         console.log("=======>", err);

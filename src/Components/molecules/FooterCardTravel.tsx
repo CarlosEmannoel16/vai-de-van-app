@@ -32,7 +32,7 @@ const AreaFoot = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e5e1e1;
+  background-color: #d1d5db;
   padding-top: 10px;
   padding-bottom: 20px;
 `;
