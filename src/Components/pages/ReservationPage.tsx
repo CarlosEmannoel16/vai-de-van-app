@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 import { FormCustomer } from "../organism/FormCustomer";
-import { PaymentMethod } from "../organism/PaymentMethod";
 import { HeaderReservation } from "../organism/HeaderReservation";
 import { ScrollView } from "react-native-gesture-handler";
 import { InformationReservation } from "../organism/InformationPayment";
@@ -8,9 +7,13 @@ import { ButtonFinishPayment } from "../atoms/ButtonFinishPayment";
 import { useContext } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { QuickLoginAccess } from "../organism/QuickLoginAccess";
+import { useLinkTo } from "@react-navigation/native";
+import { Alert } from "react-native";
 
-export const PaymentPage = () => {
+export const ReservationPage = () => {
   const { setTravelSelected } = useContext(TravelsSearchContext);
+
+  const linkTo = useLinkTo();
 
   return (
     <PayMentPageArea>
@@ -18,12 +21,16 @@ export const PaymentPage = () => {
       <ScrollArea showsVerticalScrollIndicator={false}>
         <InternalArea>
           <QuickLoginAccess />
-          {/* <PaymentMethod /> */}
+        
           <FormCustomer />
           <InformationReservation />
         </InternalArea>
       </ScrollArea>
-      <ButtonFinishPayment action={() => {}} />
+      <ButtonFinishPayment
+        action={() => {
+          linkTo("/Pagamento");
+        }}
+      />
     </PayMentPageArea>
   );
 };

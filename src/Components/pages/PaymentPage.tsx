@@ -6,9 +6,13 @@ import { useContext } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { QuickLoginAccess } from "../organism/QuickLoginAccess";
 import { HeaderPayment } from "../organism/HeaderPayment";
+import { useNavigation } from "@react-navigation/native";
+import { PaymentMethod } from "../organism/PaymentMethod";
 
 export const PaymentPage = () => {
   const { setTravelSelected } = useContext(TravelsSearchContext);
+
+  const navigate = useNavigation();
 
   return (
     <PayMentPageArea>
@@ -16,12 +20,11 @@ export const PaymentPage = () => {
       <ScrollArea showsVerticalScrollIndicator={false}>
         <InternalArea>
           <QuickLoginAccess />
-          {/* <PaymentMethod /> */}
-          <FormCustomer />
+          <PaymentMethod  />
           <InformationReservation />
         </InternalArea>
       </ScrollArea>
-      <ButtonFinishPayment action={() => {}} />
+      <ButtonFinishPayment action={() => {}}  title="Finalizar reserva"/>
     </PayMentPageArea>
   );
 };

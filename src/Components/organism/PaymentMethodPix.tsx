@@ -1,10 +1,10 @@
 import { ImageBackground } from "react-native";
 import styled from "styled-components/native";
 
-export const PaymentMethod = () => {
+export const PaymentMethodPix = () => {
   return (
     <PaymentMethodArea>
-      <Title>Forma de Pagamento</Title>
+      <Title>Pague usando a chave pix abaixo</Title>
       <PaymentMethodOptions>
         <PaymentMethodImage source={require("../../../assets/pix.webp")} />
         <PaymentMethodText>PIX</PaymentMethodText>

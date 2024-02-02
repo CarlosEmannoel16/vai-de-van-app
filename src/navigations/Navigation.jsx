@@ -8,8 +8,9 @@ import { PageHome } from "../Components/pages/Home";
 import { HeaderSearchDetails } from "../Components/organism/HeaderSearchDetails";
 import { SearchTravels } from "../Components/pages/SearchTravels";
 import { AntDesign } from "@expo/vector-icons";
-import { PaymentPage } from "../Components/pages/ReservationPage";
+import { ReservationPage } from "../Components/pages/ReservationPage";
 import { Login } from "../Components/pages/Login";
+import { PaymentPage } from "../Components/pages/PaymentPage";
 export const NavigationMenu = () => {
   const Stack = createStackNavigator();
 
@@ -89,6 +90,7 @@ export const NavigationMenu = () => {
             }}
           >
             <Stack.Screen name={"Busca"} component={SearchTravels} />
+            <Stack.Screen name={"Reservation"} component={ReservationPage} />
             <Stack.Screen name={"Pagamento"} component={PaymentPage} />
 
             <Stack.Screen name={"Login"} component={Login} />

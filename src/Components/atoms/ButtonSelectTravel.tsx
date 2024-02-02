@@ -8,7 +8,7 @@ export const ButtonSelectTravel = ({ label = "Selecionar", handler }) => {
     <AreaButton
       onPress={() => {
         handler();
-        linkTo("/Pagamento");
+        linkTo("/Reservation");
       }}
     >
       <TextButton>{label}</TextButton>
