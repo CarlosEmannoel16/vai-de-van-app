@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 
-export const InputText = ({ label = "Label", placeholder = "Placeholder" }) => {
+export const InputText = ({ label = "Label", placeholder = "Placeholder",onFocus }) => {
   return (
     <AreaInput>
       <Label>{label}</Label>
-      <Input placeholder={placeholder} />
+      <Input onFocus={onFocus} placeholder={placeholder} />
     </AreaInput>
   );
 };

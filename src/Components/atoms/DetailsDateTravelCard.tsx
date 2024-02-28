@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
-import { Fontisto } from "@expo/vector-icons";
+import { Ionicons } from '@expo/vector-icons';
 export const DetailsDateTravelCard = ({}) => {
   return (
     <AreaDetails>
     <TextStops>1 parada</TextStops>
-      <Fontisto name="arrow-right-l" size={24} color="black" />
+    <Ionicons name="notifications" size={24} color="black" />
       <TextInfo>05:45</TextInfo>
     </AreaDetails>
   );

@@ -9,41 +9,32 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { InputText } from "../atoms/InputText";
-import { useRef, useState } from "react";
-import { useUser } from "../../hooks";
+import { useRef } from "react";
 
-export const Login = ({ changeToRegister }) => {
-  const { setUser } = useUser();
-
-  const handleLogin = () => {
-    setUser({
-      name: "Usuário Teste",
-      email: "",
-      token: "token",
-    });
+export const Register = ({ changeToLogin }) => {
+  const scrollRef = useRef();
+  const handleInputFocus = () => {
+    // scrollRef?.current.scrollTo({ y: 200 });
   };
-
   return (
     <ScrollViewExternal>
       <ImageBackground
         style={styles.image}
-        source={require("../../../assets/fundo-login2.jpeg")}
+        source={require("../../../assets/fundo-login.jpeg")}
       >
         <AreaLogin>
           <BodyLogin>
-            <TextLogin>Realizar Login</TextLogin>
-            <InputText onFocus={() => {}} label="Email" />
-            <InputText onFocus={() => {}} label="Senha" />
-            <ButtonLogin onPress={handleLogin}>
-              <TextButtonLogin>Entrar</TextButtonLogin>
-            </ButtonLogin>
+            <TextLogin>Cadastre-se</TextLogin>
+            <InputText onFocus={handleInputFocus} label="Nome" />
+            <InputText onFocus={handleInputFocus} label="Email" />
+            <InputText onFocus={handleInputFocus} label="Senha" />
 
-            <TextForgotPassword>Esqueceu a senha?</TextForgotPassword>
-            <TextRegisterPhrase>
-              Junte-se a nós! Cadastre-se e aproveite.
-            </TextRegisterPhrase>
-            <TouchableOpacity onPress={changeToRegister}>
-              <Text>Cadastre-se</Text>
+            <ButtonLogin>
+              <TextButtonLogin>Cadastrar</TextButtonLogin>
+            </ButtonLogin>
+            <TextRegisterPhrase>Já tem uma conta?</TextRegisterPhrase>
+            <TouchableOpacity onPress={changeToLogin}>
+              <Text>Realizar login</Text>
             </TouchableOpacity>
           </BodyLogin>
         </AreaLogin>
@@ -108,12 +99,7 @@ const TextRegisterPhrase = styled.Text`
   margin-bottom: 10px;
 `;
 
-const TextForgotPassword = styled.Text`
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-  margin-top: 10px;
-`;
+
 
 const styles = StyleSheet.create({
   image: {

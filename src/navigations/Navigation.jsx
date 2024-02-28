@@ -1,20 +1,24 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { routes } from "../routes/routes";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { TravelsSearchContext } from "../hooks/TravelsSearch";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { PageHome } from "../Components/pages/Home";
-import { HeaderSearchDetails } from "../Components/organism/HeaderSearchDetails";
 import { SearchTravels } from "../Components/pages/SearchTravels";
 import { AntDesign } from "@expo/vector-icons";
 import { ReservationPage } from "../Components/pages/ReservationPage";
 import { Login } from "../Components/pages/Login";
 import { PaymentPage } from "../Components/pages/PaymentPage";
+import { Authentication } from "../Components/pages/Autenticate";
+import { useTravelsSearch, useUser } from "../hooks";
+import { Profile } from "../Components/pages/Profile";
 export const NavigationMenu = () => {
+  const { user } = useUser();
+  console.log("user===.", user);
+
   const Stack = createStackNavigator();
 
-  const { travelsSearch, inSearch } = useContext(TravelsSearchContext);
+  const { travelsSearch, inSearch } = useTravelsSearch();
   const Tab = createBottomTabNavigator();
 
   const [routesList, setRoutesList] = useState(routes());
@@ -69,19 +73,35 @@ export const NavigationMenu = () => {
                 ),
               }}
             />
-            <Tab.Screen
-              name={"Login"}
-              component={Login}
-              options={{
-                tabBarLabel: "Login",
-                tabBarLabelStyle: {
-                  color: "#000",
-                },
-                tabBarIcon: ({ focused }) => (
-                  <AntDesign name="user" size={24} color="black" />
-                ),
-              }}
-            />
+            {user && user.token ? (
+              <Tab.Screen
+                name={"Login"}
+                component={Authentication}
+                options={{
+                  tabBarLabel: "Login",
+                  tabBarLabelStyle: {
+                    color: "#000",
+                  },
+                  tabBarIcon: ({ focused }) => (
+                    <AntDesign name="user" size={24} color="black" />
+                  ),
+                }}
+              />
+            ) : (
+              <Tab.Screen
+                name={"Perfil"}
+                component={Profile}
+                options={{
+                  tabBarLabel: "Perfil",
+                  tabBarLabelStyle: {
+                    color: "#000",
+                  },
+                  tabBarIcon: ({ focused }) => (
+                    <AntDesign name="user" size={24} color="black" />
+                  ),
+                }}
+              />
+            )}
           </Tab.Navigator>
         ) : (
           <Stack.Navigator
@@ -93,7 +113,7 @@ export const NavigationMenu = () => {
             <Stack.Screen name={"Reservation"} component={ReservationPage} />
             <Stack.Screen name={"Pagamento"} component={PaymentPage} />
 
-            <Stack.Screen name={"Login"} component={Login} />
+            <Stack.Screen name={"Perfil"} component={PageHome} />
           </Stack.Navigator>
         )}
       </NavigationContainer>

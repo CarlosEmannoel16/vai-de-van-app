@@ -1,11 +1,6 @@
 import { PageHome } from "../Components/pages/Home";
-import Home from "../screens/Home/Home";
-import ListTravels from "../screens/ListTravel/ListTravels";
-import { MyTravels } from "../screens/MyTravels/MyTravels";
-import Profile from "../screens/Profile/Profile";
-import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
+
 export const routes = () => {
   return [
     {
