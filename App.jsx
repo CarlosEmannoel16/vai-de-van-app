@@ -27,9 +27,8 @@ export default function App() {
             backgroundColor: "#fff",
           }}
         >
+          <StatusBar translucent={true} />
           <NavigationMenu />
-
-          <StatusBar translucent={true} style={"dark"} />
         </SafeAreaView>
       </TravelSearchContextProvider>
     </UserContextProvider>

@@ -1,11 +1,17 @@
 import styled from "styled-components/native";
 import { MaterialIcons } from "@expo/vector-icons";
-export const OptionsProfile = ({ Icon, description }) => {
+export const OptionsProfile = ({
+  Icon,
+  description,
+  actionOnClick = () => {},
+}) => {
   return (
-    <AreaOptions>
+    <AreaOptions onPress={actionOnClick}>
       <AreaIcon>{Icon}</AreaIcon>
       <AreaText>
-        <TextOptions>{description}</TextOptions>
+        <TextOptions style={{ fontFamily: "Poppins-Regular" }}>
+          {description}
+        </TextOptions>
       </AreaText>
       <AreaIconAction>
         <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
@@ -14,7 +20,7 @@ export const OptionsProfile = ({ Icon, description }) => {
   );
 };
 
-export const AreaOptions = styled.View`
+export const AreaOptions = styled.TouchableOpacity`
   height: 60px;
   width: 100%;
   display: flex;
@@ -22,7 +28,7 @@ export const AreaOptions = styled.View`
   justify-content: flex-start;
   align-items: center;
   padding: 0 10px;
-  border-bottom-width: .5px;
+  border-bottom-width: 0.5px;
 `;
 
 const AreaText = styled.View`

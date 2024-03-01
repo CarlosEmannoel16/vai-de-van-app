@@ -1,10 +1,19 @@
 import styled from "styled-components/native";
 
-export const InputText = ({ label = "Label", placeholder = "Placeholder",onFocus }) => {
+export const InputText = ({
+  label = "Label",
+  placeholder = "Placeholder",
+  onFocus = () => {},
+  onChange = (any) => {},
+}) => {
   return (
     <AreaInput>
       <Label>{label}</Label>
-      <Input onFocus={onFocus} placeholder={placeholder} />
+      <Input
+        onChange={(e) => onChange(e.nativeEvent.text)}
+        onFocus={onFocus}
+        placeholder={placeholder}
+      />
     </AreaInput>
   );
 };

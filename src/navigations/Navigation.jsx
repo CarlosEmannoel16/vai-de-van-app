@@ -1,5 +1,4 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { routes } from "../routes/routes";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -7,7 +6,6 @@ import { PageHome } from "../Components/pages/Home";
 import { SearchTravels } from "../Components/pages/SearchTravels";
 import { AntDesign } from "@expo/vector-icons";
 import { ReservationPage } from "../Components/pages/ReservationPage";
-import { Login } from "../Components/pages/Login";
 import { PaymentPage } from "../Components/pages/PaymentPage";
 import { Authentication } from "../Components/pages/Autenticate";
 import { useTravelsSearch, useUser } from "../hooks";
@@ -18,19 +16,8 @@ export const NavigationMenu = () => {
 
   const Stack = createStackNavigator();
 
-  const { travelsSearch, inSearch } = useTravelsSearch();
+  const {  inSearch } = useTravelsSearch();
   const Tab = createBottomTabNavigator();
-
-  const [routesList, setRoutesList] = useState(routes());
-
-  useEffect(() => {
-    setRoutesList(routes());
-  }, [travelsSearch]);
-
-  useEffect(() => {
-    setRoutesList(routes());
-  }, []);
-
   return (
     <>
       <NavigationContainer>
@@ -73,7 +60,7 @@ export const NavigationMenu = () => {
                 ),
               }}
             />
-            {user && user.token ? (
+            {!user && !user?.token ? (
               <Tab.Screen
                 name={"Login"}
                 component={Authentication}

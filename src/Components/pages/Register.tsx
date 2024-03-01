@@ -9,12 +9,42 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { InputText } from "../atoms/InputText";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useUser } from "../../hooks";
+import UserServiceHttp from "../../services/User/UserServiceHttp";
 
 export const Register = ({ changeToLogin }) => {
-  const scrollRef = useRef();
+  const [dto, setDto] = useState({
+    name: "Carlos Emannoel",
+    email: "carlosemannoel2019@gmail.com",
+    password: "123456",
+    telefone: "88997018711",
+    cpf: "00012356981",
+  });
+
   const handleInputFocus = () => {
     // scrollRef?.current.scrollTo({ y: 200 });
+  };
+
+  const { setUser } = useUser();
+
+  const handleRegister = async () => {
+    const result = await UserServiceHttp.createUser({
+      name: dto.name,
+      phone: dto.telefone,
+      password: dto.password,
+      cpf: dto.cpf,
+      dateOfBirth: new Date(),
+      email: dto.email,
+    });
+    console.log(result.data);
+    setUser({
+      name: result.name,
+      email: result.email,
+      phone: result.phone,
+      id: result.id,
+      emailConfirmed: result.emailConfirmed,
+    });
   };
   return (
     <ScrollViewExternal>
@@ -25,11 +55,45 @@ export const Register = ({ changeToLogin }) => {
         <AreaLogin>
           <BodyLogin>
             <TextLogin>Cadastre-se</TextLogin>
-            <InputText onFocus={handleInputFocus} label="Nome" />
-            <InputText onFocus={handleInputFocus} label="Email" />
-            <InputText onFocus={handleInputFocus} label="Senha" />
+            <InputText
+              onChange={(value) => {
+                setDto({ ...dto, name: value });
+              }}
+              onFocus={handleInputFocus}
+              label="Nome"
+            />
+            <InputText
+              onChange={(value) => {
+                setDto({ ...dto, email: value });
+              }}
+              onFocus={handleInputFocus}
+              label="Email"
+            />
 
-            <ButtonLogin>
+            <InputText
+              onChange={(value) => {
+                setDto({ ...dto, telefone: value });
+              }}
+              onFocus={handleInputFocus}
+              label="Telefone"
+            />
+
+            <InputText
+              onChange={(value) => {
+                setDto({ ...dto, cpf: value });
+              }}
+              onFocus={handleInputFocus}
+              label="Cpf"
+            />
+            <InputText
+              onChange={(value) => {
+                setDto({ ...dto, password: value });
+              }}
+              onFocus={handleInputFocus}
+              label="Senha"
+            />
+
+            <ButtonLogin onPress={handleRegister}>
               <TextButtonLogin>Cadastrar</TextButtonLogin>
             </ButtonLogin>
             <TextRegisterPhrase>Já tem uma conta?</TextRegisterPhrase>
@@ -50,14 +114,13 @@ const AreaLogin = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  
 `;
 
 const BodyLogin = styled.View`
   display: flex;
-  width: 95%;
-  height: 70%;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
   padding-left: 20px;
   padding-right: 20px;
   background-color: #fff;
@@ -98,8 +161,6 @@ const TextRegisterPhrase = styled.Text`
   margin-top: 10px;
   margin-bottom: 10px;
 `;
-
-
 
 const styles = StyleSheet.create({
   image: {

@@ -24,6 +24,7 @@ export const AreaSearchHome = () => {
 
   useEffect(() => {
     CityServiceHttp.getAllCities().then((res) => {
+      console.log(res.data);
       setCities(res.data);
     });
   }, []);
