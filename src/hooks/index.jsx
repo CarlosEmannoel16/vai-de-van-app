@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { TravelsSearchContext } from "./TravelsSearch";
+import { NavigationContext } from "./NavigationController";
 
 export const useUser = () => {
   const { user, setUser } = useContext(UserContext);
@@ -28,4 +29,9 @@ export const useTravelsSearch = () => {
     travelSelected,
     setTravelSelected,
   };
+};
+
+export const useNavigationController = () => {
+  const { changeToStack, changeToTab, mode, page } = useContext(NavigationContext);
+  return { changeToStack, changeToTab, mode, page };
 };

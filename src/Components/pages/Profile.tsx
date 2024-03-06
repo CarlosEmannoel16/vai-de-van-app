@@ -4,16 +4,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
-import { useUser } from "../../hooks";
+import { useNavigationController, useUser } from "../../hooks";
 import { NotificationsList } from "../organism/NotificationList";
+import { useLinkTo } from "@react-navigation/native";
 export const Profile = () => {
   const { setUser, user } = useUser();
+  const { changeToStack } = useNavigationController();
+  const linkTo = useLinkTo();
+
   return (
     <>
       <ScrollViewExternal>
         <ImageBackgroundExternal
           source={{
-            uri: "https://cdn.pixabay.com/photo/2016/10/18/08/13/travel-1749508_1280.jpg",
+            uri: "https://cdn.pixabay.com/photo/2015/06/20/07/24/color-815551_1280.png",
           }}
         >
           <ProfileInformation>
@@ -22,7 +26,7 @@ export const Profile = () => {
               <ProfileImageArea>
                 <ProfileImage
                   source={{
-                    uri: "https://cdn2.vectorstock.com/i/1000x1000/54/41/young-and-elegant-woman-avatar-profile-vector-9685441.jpg",
+                    uri: "https://media.licdn.com/dms/image/D4D03AQFyEYwsDcfjEg/profile-displayphoto-shrink_200_200/0/1707534719234?e=1715212800&v=beta&t=OgpCJKi2_OycDnhEntv1g6OOzGZNDQSkoV-JEuOzUCU",
                   }}
                 />
               </ProfileImageArea>
@@ -46,6 +50,9 @@ export const Profile = () => {
           <OptionsProfile
             Icon={<Fontisto name="email" size={16} color="black" />}
             description="Minha conta"
+            actionOnClick={() => {
+              changeToStack('MyAccount');
+            }}
           />
           <OptionsProfile
             Icon={<Ionicons name="exit-outline" size={16} color="black" />}

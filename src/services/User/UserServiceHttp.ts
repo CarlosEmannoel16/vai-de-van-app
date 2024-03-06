@@ -28,6 +28,14 @@ class UserServiceHttp extends Http {
     });
     return result.data;
   }
+
+  async authenticateUser({ email, password }) {
+    const result = await this.http.post("/customer/auth", {
+      email,
+      password,
+    });
+    return result.data;
+  }
 }
 
 export default new UserServiceHttp();

@@ -1,10 +1,13 @@
 import styled from "styled-components/native";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import { useContext, useEffect, useState } from "react";
-import { ActivityIndicator, Text } from "react-native";
+import { ActivityIndicator, ScrollView, Text } from "react-native";
 import { ButtonBack } from "../atoms/ButtonBack";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { Notifications } from "./Notifications";
+import { OptionsNotification } from "../molecules/OptionsNotification";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 export const NotificationsList = () => {
   const { setInSearch, inSearch } = useContext(TravelsSearchContext);
@@ -37,8 +40,32 @@ export const NotificationsList = () => {
           </AreaViewReturn>
         </HeaderModal>
         <BodyModalStyled>
-          <AreaSearchSelectedModalStyled></AreaSearchSelectedModalStyled>
-          {loading ? <ActivityIndicator size="large" color="#0000ff" /> : <></>}
+          {loading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : (
+            <>
+              <ScrollView>
+                <OptionsNotification
+                  icon={<AntDesign name="Trophy" size={24} color="black" />}
+                  date="Ontem"
+                  title="Boas vindas!"
+                  description="Seja bem vindo ao nosso app"
+                />
+                <OptionsNotification
+                  icon={
+                    <MaterialCommunityIcons
+                      name="email-lock"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                  date="Ontem"
+                  title="Confirme seu email"
+                  description="Você ainda não confirmou seu email"
+                />
+              </ScrollView>
+            </>
+          )}
         </BodyModalStyled>
       </ModalView>
     </>
@@ -71,13 +98,12 @@ const HeaderModal = styled.View`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 60px 10px;
+  padding: 40px 50px 10px 10px;
 `;
 
 const BodyModalStyled = styled.View`
   flex: 1;
   width: 100%;
-  padding: 10px;
 `;
 
 const AreaSearchSelectedModalStyled = styled.View`

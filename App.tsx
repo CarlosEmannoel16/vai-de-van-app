@@ -9,6 +9,7 @@ import { TravelSearchContextProvider } from "./src/hooks/TravelsSearch";
 import { NavigationMenu } from "./src/navigations/Navigation";
 import { UserContextProvider } from "./src/hooks/UserContext";
 import { PageHome } from "./src/Components/pages/Home";
+import { NavigationContextProvider } from "./src/hooks/NavigationController";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,19 +19,20 @@ export default function App() {
   });
 
   return fontsLoaded ? (
-    <UserContextProvider>
-      <TravelSearchContextProvider>
-        <SafeAreaView
-          style={{
-            flex: 1,
-            fontFamily: "Poppins-Regular",
-            backgroundColor: "#fff",
-          }}
-        >
-          <StatusBar translucent={true} />
-          <NavigationMenu />
-        </SafeAreaView>
-      </TravelSearchContextProvider>
-    </UserContextProvider>
+    <NavigationContextProvider>
+      <UserContextProvider>
+        <TravelSearchContextProvider>
+          <SafeAreaView
+            style={{
+              flex: 1,
+              backgroundColor: "#fff",
+            }}
+          >
+            <StatusBar translucent={true} />
+            <NavigationMenu />
+          </SafeAreaView>
+        </TravelSearchContextProvider>
+      </UserContextProvider>
+    </NavigationContextProvider>
   ) : null;
 }

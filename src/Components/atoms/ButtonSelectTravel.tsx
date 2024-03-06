@@ -1,4 +1,4 @@
-import { useNavigation, useLinkTo } from "@react-navigation/native";
+import {  useLinkTo } from "@react-navigation/native";
 import styled from "styled-components/native";
 
 export const ButtonSelectTravel = ({ label = "Selecionar", handler }) => {

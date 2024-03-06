@@ -29,6 +29,7 @@ export const AreaOptions = styled.TouchableOpacity`
   align-items: center;
   padding: 0 10px;
   border-bottom-width: 0.5px;
+  border-color: #00000020;
 `;
 
 const AreaText = styled.View`

@@ -6,21 +6,33 @@ import {
   StatusBar,
   StyleSheet,
   ScrollView,
+  Alert,
 } from "react-native";
 import styled from "styled-components/native";
 import { InputText } from "../atoms/InputText";
 import { useRef, useState } from "react";
 import { useUser } from "../../hooks";
+import UserServiceHttp from "../../services/User/UserServiceHttp";
 
 export const Login = ({ changeToRegister }) => {
   const { setUser } = useUser();
-
+  const [email, setEmail] = useState("carlosemannoel2019@gmail.com");
+  const [password, setPassword] = useState("123456");
   const handleLogin = () => {
-    setUser({
-      name: "Usuário Teste",
-      email: "",
-      token: "token",
-    });
+    if (!email || !password) return Alert.alert("Preencha todos os campos!");
+    UserServiceHttp.authenticateUser({ email, password })
+      .then((response) => {
+        console.log(response);
+        setUser({
+          name: response.name,
+          email: response.email,
+          id: response.id,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message, email, password);
+        Alert.alert("Usuário ou senha inválidos!");
+      });
   };
 
   return (
@@ -32,8 +44,16 @@ export const Login = ({ changeToRegister }) => {
         <AreaLogin>
           <BodyLogin>
             <TextLogin>Realizar Login</TextLogin>
-            <InputText onFocus={() => {}} label="Email" />
-            <InputText onFocus={() => {}} label="Senha" />
+            <InputText
+              onChange={(value) => setEmail(value)}
+              onFocus={() => {}}
+              label="Email"
+            />
+            <InputText
+              onChange={(value) => setPassword(value)}
+              onFocus={() => {}}
+              label="Senha"
+            />
             <ButtonLogin onPress={handleLogin}>
               <TextButtonLogin>Entrar</TextButtonLogin>
             </ButtonLogin>

@@ -8,20 +8,19 @@ import { AntDesign } from "@expo/vector-icons";
 import { ReservationPage } from "../Components/pages/ReservationPage";
 import { PaymentPage } from "../Components/pages/PaymentPage";
 import { Authentication } from "../Components/pages/Autenticate";
-import { useTravelsSearch, useUser } from "../hooks";
+import { useNavigationController, useTravelsSearch, useUser } from "../hooks";
 import { Profile } from "../Components/pages/Profile";
+import { MyAccount } from "../Components/pages/MyAccount";
 export const NavigationMenu = () => {
   const { user } = useUser();
-  console.log("user===.", user);
-
+  const { mode, page } = useNavigationController();
   const Stack = createStackNavigator();
 
-  const {  inSearch } = useTravelsSearch();
   const Tab = createBottomTabNavigator();
   return (
     <>
       <NavigationContainer>
-        {!inSearch ? (
+        {mode === "tab" ? (
           <Tab.Navigator
             screenOptions={{
               headerShown: false,
@@ -46,6 +45,7 @@ export const NavigationMenu = () => {
                 fontSize: 12,
               },
             }}
+            initialRouteName={page || "Home"}
           >
             <Tab.Screen
               name={"Home"}
@@ -92,6 +92,7 @@ export const NavigationMenu = () => {
           </Tab.Navigator>
         ) : (
           <Stack.Navigator
+            initialRouteName= {page || "Perfil"}
             screenOptions={{
               headerShown: false,
             }}
@@ -99,8 +100,8 @@ export const NavigationMenu = () => {
             <Stack.Screen name={"Busca"} component={SearchTravels} />
             <Stack.Screen name={"Reservation"} component={ReservationPage} />
             <Stack.Screen name={"Pagamento"} component={PaymentPage} />
-
             <Stack.Screen name={"Perfil"} component={PageHome} />
+            <Stack.Screen name={"MyAccount"} component={MyAccount} />
           </Stack.Navigator>
         )}
       </NavigationContainer>
