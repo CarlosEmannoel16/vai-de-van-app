@@ -1,12 +1,20 @@
 import { useLinkTo, useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
 import styled from "styled-components/native";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
+import { useUser } from "../../hooks";
+import { ContextOfLogin } from "../../hooks/UserContext";
 
-export const QuickLoginAccess = ({ action = "", title = "Acessar" }) => {
-  const { setInSearch } = useContext(TravelsSearchContext);
+export const QuickLoginAccess = ({
+  inPage,
+  action = "",
+  title = "Acessar",
+}: {
+  inPage: ContextOfLogin;
+  action?: any;
+  title?: string;
+}) => {
   const linkTo = useLinkTo();
-  const navigation = useNavigation();
+  const { setContextOfLogin } = useUser();
   return (
     <AreaQuickLoginAccess>
       <UserIcon source={require("../../../assets/user.png")} />
@@ -18,6 +26,7 @@ export const QuickLoginAccess = ({ action = "", title = "Acessar" }) => {
       </TextSubTitleQuickLoginAccess>
       <ButtonQuickLoginAccess
         onPress={() => {
+          setContextOfLogin(inPage);
           linkTo("/Login");
         }}
       >

@@ -1,17 +1,22 @@
 import { createContext, useState } from "react";
 
-export const NavigationContext = createContext();
+export const NavigationContext = createContext<{
+  changeToStack?: any;
+  changeToTab?: any;
+  mode?: "tab" | "stack";
+  page?: string;
+}>({});
 
 export const NavigationContextProvider = ({ children }) => {
-  const [mode, setMode] = useState("tab");
+  const [mode, setMode] = useState<"tab" | "stack">("tab");
   const [page, setPage] = useState("Home");
 
-  const changeToStack = (page = 'Perfil') => {
+  const changeToStack = (page = "Perfil") => {
     setPage(page);
     setMode("stack");
   };
 
-  const changeToTab = (page = 'Home') => {
+  const changeToTab = (page = "Home") => {
     setPage(page);
     setMode("tab");
   };
@@ -22,7 +27,7 @@ export const NavigationContextProvider = ({ children }) => {
         changeToStack,
         changeToTab,
         mode,
-        page
+        page,
       }}
     >
       {children}

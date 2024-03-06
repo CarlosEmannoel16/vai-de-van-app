@@ -5,12 +5,12 @@ export const OptionsNotification = ({
   description,
   date,
   icon,
-  color = "#ffff",
+  color = "#335cef",
 }) => {
   return (
     <AreaOptions>
-      <AreaIcon style={{ backgroundColor: color }}>
-        <CircleIcon>{icon}</CircleIcon>
+      <AreaIcon >
+        <CircleIcon style={{ backgroundColor: color }}>{icon}</CircleIcon>
       </AreaIcon>
       <AreaBody>
         <AreaTitleBody>
@@ -120,7 +120,7 @@ const CircleIcon = styled.View`
   height: 40px;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: #00b362;
 `;
 

@@ -4,9 +4,10 @@ import { CardTravel } from "../organism/CardTravel";
 import { useContext } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { FlatList } from "react-native-gesture-handler";
+import { useTravelsSearch } from "../../hooks";
 
 export const SearchTravels = () => {
-  const { travelsSearch } = useContext(TravelsSearchContext);
+  const { travelsSearch } = useTravelsSearch();
 
   
   return (

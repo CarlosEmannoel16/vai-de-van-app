@@ -1,14 +1,41 @@
 import styled from "styled-components/native";
 import { InputText } from "../atoms/InputText";
+import { useState } from "react";
 
 export const FormCustomer = () => {
+  const [reservationDTO, setReservationDTO] = useState({
+    customer: {
+      name: "",
+      cpf: "",
+      phone: "",
+      email: "",
+    },
+  });
+
   return (
     <FormCustomerArea>
       <Title>Dados do passageiro</Title>
-      <InputText label="Nome Completo" placeholder="" />
-      <InputText label="Cpf" placeholder="" />
-      <InputText label="Celular" placeholder="" />
-      <InputText label="E-mail" placeholder="" />
+      
+      <InputText
+        value={reservationDTO.customer.name}
+        label="Nome Completo"
+        placeholder=""
+      />
+      <InputText
+        value={reservationDTO.customer.cpf}
+        label="Cpf"
+        placeholder=""
+      />
+      <InputText
+        value={reservationDTO.customer.phone}
+        label="Celular"
+        placeholder=""
+      />
+      <InputText
+        value={reservationDTO.customer.email}
+        label="E-mail"
+        placeholder=""
+      />
     </FormCustomerArea>
   );
 };

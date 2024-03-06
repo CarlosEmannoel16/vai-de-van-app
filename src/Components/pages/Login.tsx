@@ -11,11 +11,13 @@ import {
 import styled from "styled-components/native";
 import { InputText } from "../atoms/InputText";
 import { useRef, useState } from "react";
-import { useUser } from "../../hooks";
+import { useNavigationController, useUser } from "../../hooks";
 import UserServiceHttp from "../../services/User/UserServiceHttp";
+import { useLinkTo } from "@react-navigation/native";
 
 export const Login = ({ changeToRegister }) => {
-  const { setUser } = useUser();
+  const { setUser, contextOfLogin } = useUser();
+  const linkTo = useLinkTo();
   const [email, setEmail] = useState("carlosemannoel2019@gmail.com");
   const [password, setPassword] = useState("123456");
   const handleLogin = () => {
@@ -26,8 +28,16 @@ export const Login = ({ changeToRegister }) => {
         setUser({
           name: response.name,
           email: response.email,
+          cpf: response.cpf,
           id: response.id,
         });
+
+        if (contextOfLogin === "LoginInReservation") {
+          linkTo("/Reservation");
+        }
+        if (contextOfLogin === "LoginInPayment") {
+          linkTo("/Pagamento");
+        }
       })
       .catch((error) => {
         console.log(error.message, email, password);
@@ -48,11 +58,13 @@ export const Login = ({ changeToRegister }) => {
               onChange={(value) => setEmail(value)}
               onFocus={() => {}}
               label="Email"
+              value={email}
             />
             <InputText
               onChange={(value) => setPassword(value)}
               onFocus={() => {}}
               label="Senha"
+              value={password}
             />
             <ButtonLogin onPress={handleLogin}>
               <TextButtonLogin>Entrar</TextButtonLogin>

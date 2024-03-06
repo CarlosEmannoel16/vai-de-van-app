@@ -4,8 +4,9 @@ import { TravelsSearchContext } from "./TravelsSearch";
 import { NavigationContext } from "./NavigationController";
 
 export const useUser = () => {
-  const { user, setUser } = useContext(UserContext);
-  return { user, setUser };
+  const { user, setUser, setContextOfLogin, contextOfLogin } =
+    useContext(UserContext);
+  return { user, setUser, setContextOfLogin, contextOfLogin };
 };
 
 export const useTravelsSearch = () => {
@@ -32,6 +33,7 @@ export const useTravelsSearch = () => {
 };
 
 export const useNavigationController = () => {
-  const { changeToStack, changeToTab, mode, page } = useContext(NavigationContext);
+  const { changeToStack, changeToTab, mode, page } =
+    useContext(NavigationContext);
   return { changeToStack, changeToTab, mode, page };
 };

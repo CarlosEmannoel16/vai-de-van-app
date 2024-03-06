@@ -10,8 +10,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 export const NotificationsList = () => {
-  const { setInSearch, inSearch } = useContext(TravelsSearchContext);
-
   const [modalVisible, setModalVisible] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -38,6 +36,9 @@ export const NotificationsList = () => {
             <ButtonBack key={1} action={() => setModalVisible(!modalVisible)} />
             <TextReturn>Voltar</TextReturn>
           </AreaViewReturn>
+          <AreaTitle>
+            <TitleHeader>Notificações</TitleHeader>
+          </AreaTitle>
         </HeaderModal>
         <BodyModalStyled>
           {loading ? (
@@ -46,7 +47,7 @@ export const NotificationsList = () => {
             <>
               <ScrollView>
                 <OptionsNotification
-                  icon={<AntDesign name="Trophy" size={24} color="black" />}
+                  icon={<AntDesign name="Trophy" size={24} color="white" />}
                   date="Ontem"
                   title="Boas vindas!"
                   description="Seja bem vindo ao nosso app"
@@ -56,7 +57,7 @@ export const NotificationsList = () => {
                     <MaterialCommunityIcons
                       name="email-lock"
                       size={24}
-                      color="black"
+                      color="white"
                     />
                   }
                   date="Ontem"
@@ -101,36 +102,25 @@ const HeaderModal = styled.View`
   padding: 40px 50px 10px 10px;
 `;
 
+const AreaTitle = styled.View`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  justify-content: center;
+  width: 100%;
+
+`;
+
+const TitleHeader = styled.Text`
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+`;
+
 const BodyModalStyled = styled.View`
   flex: 1;
   width: 100%;
-`;
-
-const AreaSearchSelectedModalStyled = styled.View`
-  width: 100%;
-  height: 50px;
-  margin-bottom: 10px;
-`;
-
-const InputTextSearchStyled = styled.TextInput`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #00000030;
-  padding: 10px;
-`;
-
-const AreaOptionsModalStyled = styled.ScrollView`
-  width: 100%;
-  height: 100%;
-`;
-
-const OptionSelectStyled = styled.TouchableOpacity`
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  margin-bottom: 5px;
 `;
 
 const AreaViewReturn = styled.View`

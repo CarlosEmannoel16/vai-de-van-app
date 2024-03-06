@@ -5,6 +5,7 @@ export const InputText = ({
   placeholder = "Placeholder",
   onFocus = () => {},
   onChange = (any) => {},
+  value,
 }) => {
   return (
     <AreaInput>
@@ -13,6 +14,7 @@ export const InputText = ({
         onChange={(e) => onChange(e.nativeEvent.text)}
         onFocus={onFocus}
         placeholder={placeholder}
+        value={value}
       />
     </AreaInput>
   );

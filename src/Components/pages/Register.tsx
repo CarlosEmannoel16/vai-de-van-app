@@ -61,6 +61,7 @@ export const Register = ({ changeToLogin }) => {
               }}
               onFocus={handleInputFocus}
               label="Nome"
+              value={dto.name}
             />
             <InputText
               onChange={(value) => {
@@ -68,6 +69,7 @@ export const Register = ({ changeToLogin }) => {
               }}
               onFocus={handleInputFocus}
               label="Email"
+              value={dto.email}
             />
 
             <InputText
@@ -76,6 +78,7 @@ export const Register = ({ changeToLogin }) => {
               }}
               onFocus={handleInputFocus}
               label="Telefone"
+              value={dto.telefone}
             />
 
             <InputText
@@ -84,6 +87,7 @@ export const Register = ({ changeToLogin }) => {
               }}
               onFocus={handleInputFocus}
               label="Cpf"
+              value={dto.cpf}
             />
             <InputText
               onChange={(value) => {
@@ -91,6 +95,7 @@ export const Register = ({ changeToLogin }) => {
               }}
               onFocus={handleInputFocus}
               label="Senha"
+              value={dto.password}
             />
 
             <ButtonLogin onPress={handleRegister}>

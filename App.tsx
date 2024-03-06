@@ -10,8 +10,16 @@ import { NavigationMenu } from "./src/navigations/Navigation";
 import { UserContextProvider } from "./src/hooks/UserContext";
 import { PageHome } from "./src/Components/pages/Home";
 import { NavigationContextProvider } from "./src/hooks/NavigationController";
-
+import * as Notifications from "expo-notifications";
 export default function App() {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    }),
+  });
+
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
     "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),

@@ -2,29 +2,27 @@ import styled from "styled-components/native";
 import { FormCustomer } from "../organism/FormCustomer";
 import { InformationReservation } from "../organism/InformationPayment";
 import { ButtonFinishPayment } from "../atoms/ButtonFinishPayment";
-import { useContext } from "react";
-import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { QuickLoginAccess } from "../organism/QuickLoginAccess";
 import { HeaderPayment } from "../organism/HeaderPayment";
 import { useNavigation } from "@react-navigation/native";
 import { PaymentMethod } from "../organism/PaymentMethod";
+import { useUser } from "../../hooks";
 
 export const PaymentPage = () => {
-  const { setTravelSelected } = useContext(TravelsSearchContext);
-
-  const navigate = useNavigation();
+  const { user } = useUser();
 
   return (
     <PayMentPageArea>
       <HeaderPayment />
       <ScrollArea showsVerticalScrollIndicator={false}>
         <InternalArea>
-          <QuickLoginAccess />
-          <PaymentMethod  />
+          {!user?.id ? <QuickLoginAccess inPage="LoginInPayment" /> : null}
+
+          <PaymentMethod />
           <InformationReservation />
         </InternalArea>
       </ScrollArea>
-      <ButtonFinishPayment action={() => {}}  title="Finalizar reserva"/>
+      <ButtonFinishPayment action={() => {}} title="Finalizar reserva" />
     </PayMentPageArea>
   );
 };
@@ -49,4 +47,5 @@ const PayMentPageArea = styled.View`
 const ScrollArea = styled.ScrollView`
   width: 100%;
   height: 80%;
+  padding-top: 40px;
 `;

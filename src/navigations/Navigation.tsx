@@ -11,6 +11,7 @@ import { Authentication } from "../Components/pages/Autenticate";
 import { useNavigationController, useTravelsSearch, useUser } from "../hooks";
 import { Profile } from "../Components/pages/Profile";
 import { MyAccount } from "../Components/pages/MyAccount";
+import { Login } from "../Components/pages/Login";
 export const NavigationMenu = () => {
   const { user } = useUser();
   const { mode, page } = useNavigationController();
@@ -100,6 +101,7 @@ export const NavigationMenu = () => {
             <Stack.Screen name={"Busca"} component={SearchTravels} />
             <Stack.Screen name={"Reservation"} component={ReservationPage} />
             <Stack.Screen name={"Pagamento"} component={PaymentPage} />
+            <Stack.Screen name={"Login"} component={Authentication} />
             <Stack.Screen name={"Perfil"} component={PageHome} />
             <Stack.Screen name={"MyAccount"} component={MyAccount} />
           </Stack.Navigator>

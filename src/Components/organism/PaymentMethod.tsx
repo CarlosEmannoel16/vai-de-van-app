@@ -9,6 +9,10 @@ export const PaymentMethod = () => {
         <PaymentMethodImage source={require("../../../assets/pix.webp")} />
         <PaymentMethodText>PIX</PaymentMethodText>
       </PaymentMethodOptions>
+      <PaymentMethodOptions>
+        <PaymentMethodImage source={require("../../../assets/credito.png")} />
+        <PaymentMethodText>Cartão</PaymentMethodText>
+      </PaymentMethodOptions>
     </PaymentMethodArea>
   );
 };

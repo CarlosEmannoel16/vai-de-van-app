@@ -7,10 +7,10 @@ import { Fontisto } from "@expo/vector-icons";
 import { useNavigationController, useUser } from "../../hooks";
 import { NotificationsList } from "../organism/NotificationList";
 import { useLinkTo } from "@react-navigation/native";
+import { sendNotification } from "../../services/Notification/Notification";
 export const Profile = () => {
   const { setUser, user } = useUser();
   const { changeToStack } = useNavigationController();
-  const linkTo = useLinkTo();
 
   return (
     <>
@@ -42,6 +42,7 @@ export const Profile = () => {
           <OptionsProfile
             Icon={<FontAwesome5 name="user-cog" size={16} color="black" />}
             description="Meus dados"
+            actionOnClick={sendNotification}
           />
           <OptionsProfile
             Icon={<MaterialIcons name="history" size={16} color="black" />}
@@ -51,7 +52,7 @@ export const Profile = () => {
             Icon={<Fontisto name="email" size={16} color="black" />}
             description="Minha conta"
             actionOnClick={() => {
-              changeToStack('MyAccount');
+              changeToStack("MyAccount");
             }}
           />
           <OptionsProfile
@@ -72,7 +73,7 @@ const ScrollViewExternal = styled.ScrollView`
 
 const ImageBackgroundExternal = styled.ImageBackground`
   width: 100%;
-  height: auto;
+  height: 120px;
 `;
 
 const ProfileInformation = styled.View`
@@ -111,8 +112,8 @@ const ProfileImage = styled.Image`
 
 const TextProfileName = styled.Text`
   font-size: 18px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 800;
+  color: #000;
 `;
 
 const OptionsArea = styled.View`
@@ -121,4 +122,5 @@ const OptionsArea = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 80px;
 `;

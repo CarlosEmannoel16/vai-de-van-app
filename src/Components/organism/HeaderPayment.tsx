@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import { ButtonBack } from "../atoms/ButtonBack";
 import { useNavigation } from "@react-navigation/native";
+import { Text } from "react-native";
 
 export const HeaderPayment = () => {
   const navigation = useNavigation();
@@ -13,6 +14,7 @@ export const HeaderPayment = () => {
           navigation.goBack();
         }}
       />
+      <Text>Voltar</Text>
      
     </AreaDetails>
   );

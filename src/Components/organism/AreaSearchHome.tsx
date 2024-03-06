@@ -7,18 +7,19 @@ import { useContext, useEffect, useState } from "react";
 import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import TravelServiceHttp from "../../services/Travels/TravelService";
 import { Alert } from "react-native";
+import { useNavigationController, useTravelsSearch } from "../../hooks";
 
 export const AreaSearchHome = () => {
   const [cities, setCities] = useState([]);
-  const { setDestines, setInSearch, setTravelsSearch } =
-    useContext(TravelsSearchContext);
+  const { setDestines, setInSearch, setTravelsSearch } = useTravelsSearch();
+  const { changeToStack } = useNavigationController();
   const [origin, setOrigin] = useState({
     label: "Cedro",
-    value: "f3082c73-5f4a-426f-8c18-345d4a542b19",
+    value: '0b952554-01d6-401b-8326-a67bd53e1ea0',
   });
   const [destiny, setDestiny] = useState({
     label: "Iguatu",
-    value: "88b8ee84-0707-4202-831a-89baedca7f73",
+    value: "70fbd63f-a0d5-4d7d-921e-8f9592c7b32b",
   });
   const [date, setDate] = useState(new Date());
 
@@ -40,7 +41,7 @@ export const AreaSearchHome = () => {
       .then((res) => {
         if (res.data.data.length) {
           setTravelsSearch(res.data.data);
-          setInSearch(true);
+          changeToStack("Travels");
           return;
         }
         Alert.alert(
@@ -62,6 +63,7 @@ export const AreaSearchHome = () => {
           data={cities}
           setValue={setOrigin}
           icon="Origin"
+
         />
         <InputSelect
           label="Destino"

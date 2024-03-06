@@ -19,7 +19,6 @@ export const InputSelect = ({
   data,
   setValue,
 }: IInputSelect) => {
-  const { setInSearch, inSearch } = useContext(TravelsSearchContext);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setItemSelected] = useState({});

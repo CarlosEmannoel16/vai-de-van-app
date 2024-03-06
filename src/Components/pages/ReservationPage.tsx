@@ -9,19 +9,20 @@ import { TravelsSearchContext } from "../../hooks/TravelsSearch";
 import { QuickLoginAccess } from "../organism/QuickLoginAccess";
 import { useLinkTo } from "@react-navigation/native";
 import { Alert } from "react-native";
+import { useUser } from "../../hooks";
 
 export const ReservationPage = () => {
-  const { setTravelSelected } = useContext(TravelsSearchContext);
-
   const linkTo = useLinkTo();
+  const { user } = useUser();
+
+  console.log(user);
 
   return (
     <PayMentPageArea>
       <HeaderReservation />
       <ScrollArea showsVerticalScrollIndicator={false}>
         <InternalArea>
-          <QuickLoginAccess />
-        
+          {!user?.id ? <QuickLoginAccess inPage="LoginInReservation" /> : null}
           <FormCustomer />
           <InformationReservation />
         </InternalArea>
@@ -42,6 +43,7 @@ const InternalArea = styled.View`
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
 `;
 
 const PayMentPageArea = styled.View`
@@ -55,4 +57,6 @@ const PayMentPageArea = styled.View`
 const ScrollArea = styled.ScrollView`
   width: 100%;
   height: 80%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;
